@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    style="@style/Adopta.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_blue">
+            <ImageView
+                android:id="@+id/ivIcono"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_notifications"
+                app:tint="@color/adopta_teal_dark"/>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                tools:text="Solicitud aceptada"
+                android:id="@+id/tvTitulo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Body"
+                tools:text="Tu solicitud para adoptar a Luna fue aceptada. Revisa los siguientes pasos."
+                android:id="@+id/tvMensaje"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Caption"
+                tools:text="Hace 2 horas"
+                android:id="@+id/tvTiempo"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/viewNoLeida"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_dot"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
