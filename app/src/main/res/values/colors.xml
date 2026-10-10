@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="adopta_teal">#5E9C9C</color>
+    <color name="adopta_teal_dark">#3F7A7A</color>
+    <color name="adopta_orange">#F7AE7C</color>
+    <color name="adopta_cream">#FBF3DF</color>
+    <color name="adopta_blue_light">#C2DEE6</color>
+    <color name="adopta_text">#2F4F4F</color>
+    <color name="adopta_gray">#8AA0A0</color>
+    <color name="adopta_error">#C0504D</color>
+    <color name="white">#FFFFFF</color>
 </resources>

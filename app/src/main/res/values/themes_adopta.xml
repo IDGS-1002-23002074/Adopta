@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Adopta" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/adopta_teal</item>
+        <item name="colorPrimaryVariant">@color/adopta_teal_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/adopta_orange</item>
+        <item name="colorOnSecondary">@color/adopta_text</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
