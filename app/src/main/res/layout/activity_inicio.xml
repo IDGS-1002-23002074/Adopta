@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ad_bg"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:src="@drawable/logo_wordmark"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitStart"
+                    android:contentDescription="Adopta+" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="A"
+                    android:textSize="15sp"
+                    android:textColor="@color/ad_ink"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:background="@drawable/bg_avatar"
+                    android:contentDescription="Perfil" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hola, Arleth"
+                android:textSize="14sp"
+                android:textColor="@color/ad_muted"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Encuentra a tu&#10;nuevo compañero"
+                android:textSize="32sp"
+                android:textColor="@color/ad_ink"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="4dp"
+                android:lineSpacingMultiplier="1.05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="22dp">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="0dp"
+                    android:hint="Buscar por nombre o raza"
+                    android:background="@drawable/bg_search"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/ad_ink"
+                    android:textColorHint="@color/ad_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/ad_muted" />
+
+                <ImageView
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/ic_tune"
+                    android:scaleType="center"
+                    android:tint="@color/ad_ink"
+                    android:contentDescription="Filtros"
+                    android:background="@drawable/bg_icon_button"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Todos"
+                        android:textSize="14sp"
+                        android:textColor="@color/ad_on_accent"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:background="@drawable/bg_chip_selected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Perros"
+                        android:textSize="14sp"
+                        android:textColor="@color/ad_ink"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:background="@drawable/bg_chip"
+                        android:layout_marginStart="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Gatos"
+                        android:textSize="14sp"
+                        android:textColor="@color/ad_ink"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:background="@drawable/bg_chip"
+                        android:layout_marginStart="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Conejos"
+                        android:textSize="14sp"
+                        android:textColor="@color/ad_ink"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:background="@drawable/bg_chip"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:src="@drawable/ic_photo"
+                        android:scaleType="center"
+                        android:contentDescription="Foto de Max"
+                        android:background="@drawable/bg_photo_a" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disponible"
+                        android:textSize="12sp"
+                        android:textColor="@color/ad_teal"
+                        android:fontFamily="sans-serif-medium"
+                        android:background="@drawable/bg_badge"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="12dp" />
+
+                    <ImageView
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/ic_favorite_border"
+                        android:scaleType="center"
+                        android:tint="@color/ad_peach_accent"
+                        android:contentDescription="Guardar en favoritos"
+                        android:background="@drawable/bg_circle_white"
+                        android:layout_gravity="top|end"
+                        android:layout_margin="12dp" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Max"
+                        android:textSize="24sp"
+                        android:textColor="@color/ad_ink"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 años"
+                        android:textSize="14sp"
+                        android:textColor="@color/ad_ink"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Labrador retriever, macho, mediano"
+                    android:textSize="14sp"
+                    android:textColor="@color/ad_muted"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Recién llegados"
+                    android:textSize="22sp"
+                    android:textColor="@color/ad_ink"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver todos"
+                    android:textSize="14sp"
+                    android:textColor="@color/ad_teal"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:layout_marginTop="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="14dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/ic_photo"
+                            android:scaleType="center"
+                            android:contentDescription="Foto de Luna"
+                            android:background="@drawable/bg_photo_b" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Luna"
+                            android:textSize="17sp"
+                            android:textColor="@color/ad_ink"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gata, 1 año"
+                            android:textSize="13sp"
+                            android:textColor="@color/ad_muted"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="14dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/ic_photo"
+                            android:scaleType="center"
+                            android:contentDescription="Foto de Coco"
+                            android:background="@drawable/bg_photo_c" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coco"
+                            android:textSize="17sp"
+                            android:textColor="@color/ad_ink"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Conejo, 8 meses"
+                            android:textSize="13sp"
+                            android:textColor="@color/ad_muted"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:src="@drawable/ic_photo"
+                            android:scaleType="center"
+                            android:contentDescription="Foto de Rocky"
+                            android:background="@drawable/bg_photo_a" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rocky"
+                            android:textSize="17sp"
+                            android:textColor="@color/ad_ink"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mestizo, 3 años"
+                            android:textSize="13sp"
+                            android:textColor="@color/ad_muted"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cómo funciona"
+                    android:textSize="22sp"
+                    android:textColor="@color/ad_ink"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/ad_line"
+                        android:layout_marginTop="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <TextView
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textSize="22sp"
+                            android:textColor="@color/ad_teal"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Elige a tu compañero"
+                                android:textSize="15sp"
+                                android:textColor="@color/ad_ink"
+                                android:fontFamily="sans-serif-medium" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Revisa su carácter y su historial de salud."
+                                android:textSize="13sp"
+                                android:textColor="@color/ad_muted"
+                                android:layout_marginTop="2dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/ad_line"
+                        android:layout_marginTop="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <TextView
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textSize="22sp"
+                            android:textColor="@color/ad_teal"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Envía tu solicitud"
+                                android:textSize="15sp"
+                                android:textColor="@color/ad_ink"
+                                android:fontFamily="sans-serif-medium" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Completa el formulario con los datos de tu hogar."
+                                android:textSize="13sp"
+                                android:textColor="@color/ad_muted"
+                                android:layout_marginTop="2dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/ad_line"
+                        android:layout_marginTop="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                        <TextView
+                            android:layout_width="36dp"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:textSize="22sp"
+                            android:textColor="@color/ad_teal"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Conócelo en persona"
+                                android:textSize="15sp"
+                                android:textColor="@color/ad_ink"
+                                android:fontFamily="sans-serif-medium" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Coordinamos una visita antes de que decidas."
+                                android:textSize="13sp"
+                                android:textColor="@color/ad_muted"
+                                android:layout_marginTop="2dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/ad_line"
+                    android:layout_marginTop="0dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ad_line"
+        android:layout_marginTop="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/ad_bg">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="Inicio"
+            android:textSize="11sp"
+            android:textColor="@color/ad_teal"
+            android:fontFamily="sans-serif-medium"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:drawableTop="@drawable/ic_home"
+            android:drawablePadding="3dp"
+            android:drawableTint="@color/ad_teal" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="Mascotas"
+            android:textSize="11sp"
+            android:textColor="@color/ad_nav_idle"
+            android:fontFamily="sans-serif-medium"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:drawableTop="@drawable/ic_pets"
+            android:drawablePadding="3dp"
+            android:drawableTint="@color/ad_nav_idle" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="Solicitudes"
+            android:textSize="11sp"
+            android:textColor="@color/ad_nav_idle"
+            android:fontFamily="sans-serif-medium"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:drawableTop="@drawable/ic_assignment"
+            android:drawablePadding="3dp"
+            android:drawableTint="@color/ad_nav_idle" />
+
+    </LinearLayout>
+
+</LinearLayout>

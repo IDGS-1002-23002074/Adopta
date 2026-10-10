@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ad_bg">#FFFFFF</color>
+    <color name="ad_ink">#1F2A2E</color>
+    <color name="ad_ink_soft">#435258</color>
+    <color name="ad_muted">#66767B</color>
+    <color name="ad_hint">#94A3A7</color>
+    <color name="ad_line">#E9E6DF</color>
+    <color name="ad_stone">#F6F3EC</color>
+    <color name="ad_nav_idle">#8A9A9E</color>
+    <color name="ad_teal">#3F6E73</color>
+    <color name="ad_teal_mid">#659FA1</color>
+    <color name="ad_teal_tint">#E3F1EF</color>
+    <color name="ad_peach_accent">#EE9B63</color>
+    <color name="ad_peach_text">#A9501C</color>
+    <color name="ad_peach_tint">#FFEBDB</color>
+    <color name="ad_blue_tint">#E4F1F5</color>
+    <color name="ad_blue_text">#35657A</color>
+    <color name="ad_on_accent">#FFFFFF</color>
+    <color name="ad_photo_icon">#A9CBC7</color>
+    <color name="ad_photo_a">#FBF1DE</color>
+    <color name="ad_photo_b">#DDEEF2</color>
+    <color name="ad_photo_c">#FDE6D4</color>
+
+    <!-- Alias de versiones anteriores: se pueden borrar si ya no existen esos drawables -->
+    <color name="ad_surface">#FFFFFF</color>
+    <color name="ad_stroke">#E8E6E2</color>
+    <color name="ad_text_primary">#202124</color>
+    <color name="ad_text_secondary">#6E6E73</color>
+    <color name="ad_accent">#3F6E73</color>
+    <color name="ad_primary">#3F6E73</color>
+    <color name="ad_primary_dark">#3F6E73</color>
+    <color name="ad_primary_light">#659FA1</color>
+    <color name="ad_chip">#F4F2EF</color>
+    <color name="ad_chip_selected">#202124</color>
+    <color name="ad_placeholder">#ECE7E0</color>
+    <color name="ad_hero_sub">#FFFFFF</color>
+    <color name="ad_butter">#F4F2EF</color>
+    <color name="ad_green">#3F6E73</color>
+    <color name="ad_peach">#F4F2EF</color>
+    <color name="ad_lilac">#E8E6EC</color>
+    <color name="ad_mint">#E7F1EC</color>
+    <color name="ad_butter_light">#FFF4D9</color>
+    <color name="ad_sky">#E3E9E4</color>
+    <color name="ad_nav">#202124</color>
+    <color name="ad_glass">#33FFFFFF</color>
+</resources>
