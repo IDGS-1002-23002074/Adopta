@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    style="@style/Adopta.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/adopta_cream">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/adopta_cream">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_pets"
+                    app:tint="@color/adopta_teal"
+                    android:alpha="0.5"
+                    android:importantForAccessibility="no"/>
+                <ImageView
+                    android:id="@+id/ivMascota"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Foto"/>
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                tools:text="Luna"
+                android:id="@+id/tvNombre"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Body"
+                tools:text="Gato mestizo · 2 años"
+                android:id="@+id/tvRaza"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Caption"
+                tools:text="León, Gto."
+                android:id="@+id/tvUbicacion"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnFavorito"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/adopta_orange"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Quitar de favoritos"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
