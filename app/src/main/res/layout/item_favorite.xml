@@ -1,77 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Adopta.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
+    android:layout_margin="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="12dp">
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="88dp"
-            android:layout_height="88dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/adopta_cream">
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/adopta_cream">
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_pets"
-                    app:tint="@color/adopta_teal"
-                    android:alpha="0.5"
-                    android:importantForAccessibility="no"/>
-                <ImageView
-                    android:id="@+id/ivMascota"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Foto"/>
-            </FrameLayout>
-        </com.google.android.material.card.MaterialCardView>
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivMascota"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="center"
+            android:contentDescription="Foto de la mascota"
+            app:layout_constraintDimensionRatio="4:5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:background="@drawable/bg_scrim_bottom"
+            app:layout_constraintStart_toStartOf="@id/ivMascota"
+            app:layout_constraintEnd_toEndOf="@id/ivMascota"
+            app:layout_constraintBottom_toBottomOf="@id/ivMascota" />
+
+        <ImageButton
+            android:id="@+id/btnFavorito"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_glass_circle"
+            android:contentDescription="Quitar de guardados"
+            android:padding="8dp"
+            android:src="@drawable/ic_bookmark_filled"
+            app:tint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/ivMascota"
+            app:layout_constraintTop_toTopOf="@id/ivMascota" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="14dp"
+            app:layout_constraintStart_toStartOf="@id/ivMascota"
+            app:layout_constraintEnd_toEndOf="@id/ivMascota"
+            app:layout_constraintBottom_toBottomOf="@id/ivMascota">
             <TextView
+                android:id="@+id/tvNombre"
+                style="@style/Adopta.Display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                tools:text="Luna"
-                android:id="@+id/tvNombre"/>
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="Luna" />
             <TextView
+                android:id="@+id/tvRaza"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.Body"
-                tools:text="Gato mestizo · 2 años"
-                android:id="@+id/tvRaza"/>
+                android:textColor="@color/adopta_white_90"
+                android:textSize="13sp"
+                tools:text="Mestiza" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Adopta.Caption"
-                tools:text="León, Gto."
                 android:id="@+id/tvUbicacion"
-                android:layout_marginTop="4dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/adopta_white_90"
+                android:textSize="12sp"
+                tools:text="León, Gto." />
         </LinearLayout>
-        <ImageButton
-            android:id="@+id/btnFavorito"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_favorite"
-            app:tint="@color/adopta_orange"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Quitar de favoritos"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

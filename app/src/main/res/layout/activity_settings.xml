@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/bg_screen">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -243,7 +243,7 @@
                 style="@style/Adopta.Link"
                 android:text="Eliminar cuenta"
                 android:id="@+id/tvEliminar"
-                android:textColor="@color/adopta_error"
+                android:textColor="@color/adopta_teal_dark"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"/>
         </LinearLayout>

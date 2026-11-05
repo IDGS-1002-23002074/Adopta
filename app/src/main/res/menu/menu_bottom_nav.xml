@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_descubrir" android:icon="@drawable/nav_discover" android:title="Descubrir" />
+    <item android:id="@+id/nav_favoritos" android:icon="@drawable/nav_saved" android:title="Guardados" />
+    <item android:id="@+id/nav_notificaciones" android:icon="@drawable/nav_activity" android:title="Actividad" />
+    <item android:id="@+id/nav_mis_mascotas" android:icon="@drawable/nav_home" android:title="Mi hogar" />
+    <item android:id="@+id/nav_perfil" android:icon="@drawable/nav_profile" android:title="Perfil" />
+</menu>

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/adopta_background">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +21,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/bg_profile_header"
+                android:padding="24dp"
                 android:gravity="center_horizontal">
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    app:cardCornerRadius="48dp"
+                    android:layout_width="104dp"
+                    android:layout_height="104dp"
+                    app:cardCornerRadius="52dp"
                     app:cardElevation="0dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="3dp"
                     app:cardBackgroundColor="@color/adopta_cream">
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -52,14 +56,16 @@
                 <TextView
                     android:id="@+id/tvNombre"
                     style="@style/Adopta.Title"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="14dp"
                     tools:text="Danna " />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/Adopta.Subtitle"
+                    android:textColor="@color/adopta_blue_light"
                     tools:text="danna@correo.com"
                     android:id="@+id/tvEmail"/>
                 <com.google.android.material.button.MaterialButton
@@ -69,6 +75,10 @@
                     android:layout_marginTop="12dp"
                     android:text="Editar información"
                     style="@style/Adopta.Button.Outline"
+                    android:textColor="@color/white"
+                    app:strokeColor="@color/white"
+                    app:iconTint="@color/white"
+                    app:rippleColor="@color/adopta_teal_dark"
                     app:icon="@drawable/ic_person"/>
             </LinearLayout>
             <LinearLayout

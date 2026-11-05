@@ -1,199 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".PetDetailActivity"
+    android:id="@+id/detailRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/adopta_background">
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
-                <FrameLayout
+                android:layout_height="440dp">
+                <ImageView
+                    android:id="@+id/ivMascota"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/adopta_cream">
-                    <ImageView
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_pets"
-                        app:tint="@color/adopta_teal"
-                        android:alpha="0.4"/>
-                    <ImageView
-                        android:id="@+id/ivMascota"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="Foto de la mascota"/>
-                </FrameLayout>
-                <ImageButton
-                    android:id="@+id/btnBack"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_gravity="top|start"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/adopta_teal_dark"
-                    android:background="@drawable/bg_circle_white"
-                    android:contentDescription="Volver"/>
-                <ImageButton
-                    android:id="@+id/btnFavorito"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/ic_favorite"
-                    app:tint="@color/adopta_orange"
-                    android:background="@drawable/bg_circle_white"
-                    android:contentDescription="Agregar a favoritos"/>
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Foto de la mascota" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_gravity="top"
+                    android:background="@drawable/bg_scrim_top" />
             </FrameLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-32dp"
+                android:background="@drawable/bg_sheet_top"
                 android:orientation="vertical"
-                android:layout_marginTop="-24dp"
-                android:padding="24dp"
-                android:background="@drawable/bg_sheet_top">
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="32dp">
+
                 <TextView
+                    android:id="@+id/tvNombre"
+                    style="@style/Adopta.Display"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Adopta.Title"
-                    tools:text="Luna"
-                    android:id="@+id/tvNombre"/>
+                    tools:text="Luna" />
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/tvRaza"
                     style="@style/Adopta.Subtitle"
-                    tools:text="León, Guanajuato · Refugio Huellitas"
-                    android:id="@+id/tvUbicacion"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    tools:text="Mestiza · Gato" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/adopta_teal_dark"
+                        android:importantForAccessibility="no" />
                     <TextView
-                        android:id="@+id/chipEdad"
+                        android:id="@+id/tvUbicacion"
+                        style="@style/Adopta.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_chip"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
+                        android:layout_marginStart="6dp"
                         android:textColor="@color/adopta_teal_dark"
-                        android:textStyle="bold"
-                        tools:text="2 años"/>
-                    <TextView
-                        android:id="@+id/chipSexo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_chip"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/adopta_teal_dark"
-                        android:textStyle="bold"
-                        tools:text="Hembra"
-                        android:layout_marginStart="8dp"/>
-                    <TextView
-                        android:id="@+id/chipTamano"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_chip"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/adopta_teal_dark"
-                        android:textStyle="bold"
-                        tools:text="Mediana"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="13sp"
+                        tools:text="León, Gto. · 3.2 km" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tile"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="@color/adopta_teal_dark"
+                            android:importantForAccessibility="no" />
+                        <TextView
+                            android:id="@+id/tileEdad"
+                            style="@style/Adopta.CardTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15sp"
+                            tools:text="2 años" />
+                        <TextView
+                            style="@style/Adopta.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edad" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tile"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_pets"
+                            app:tint="@color/adopta_teal_dark"
+                            android:importantForAccessibility="no" />
+                        <TextView
+                            android:id="@+id/tileTamano"
+                            style="@style/Adopta.CardTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15sp"
+                            tools:text="Mediana" />
+                        <TextView
+                            style="@style/Adopta.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tamaño" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tile"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_zap"
+                            app:tint="@color/adopta_teal_dark"
+                            android:importantForAccessibility="no" />
+                        <TextView
+                            android:id="@+id/tileEnergia"
+                            style="@style/Adopta.CardTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textSize="15sp"
+                            tools:text="Media" />
+                        <TextView
+                            style="@style/Adopta.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Energía" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
                     style="@style/Adopta.Section"
-                    android:text="Sobre mí"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="8dp"/>
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Sobre mí" />
+                <TextView
+                    android:id="@+id/tvDescripcion"
                     style="@style/Adopta.Body"
-                    tools:text="Luna es cariñosa, juguetona y se lleva bien con otros gatos. Busca un hogar tranquilo donde pueda sentirse segura."
-                    android:id="@+id/tvDescripcion"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    tools:text="Luna es cariñosa y juguetona." />
+
                 <TextView
+                    android:id="@+id/tvPersonalidadTitulo"
+                    style="@style/Adopta.Section"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Su personalidad" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cgPersonalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:chipSpacingVertical="8dp" />
+
+                <TextView
                     style="@style/Adopta.Section"
-                    android:text="Salud"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:text="Salud" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
                     <TextView
                         android:id="@+id/chipVacunada"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_chip"
+                        android:drawableStart="@drawable/ic_check"
+                        android:drawableTint="@color/adopta_teal_dark"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center_vertical"
                         android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
+                        android:paddingEnd="14dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="Vacunada"
                         android:textColor="@color/adopta_teal_dark"
-                        android:textStyle="bold"
-                        tools:text="Vacunada"/>
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/chipEsterilizada"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:background="@drawable/bg_chip"
+                        android:drawableStart="@drawable/ic_check"
+                        android:drawableTint="@color/adopta_teal_dark"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center_vertical"
                         android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:textSize="12sp"
+                        android:paddingEnd="14dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="Esterilizada"
                         android:textColor="@color/adopta_teal_dark"
-                        android:textStyle="bold"
-                        tools:text="Esterilizada"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="13sp" />
                 </LinearLayout>
+
+                <!-- Refugio: confianza -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Adopta.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_icon_bubble">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_home_outline"
+                                app:tint="@color/adopta_teal_dark"
+                                android:importantForAccessibility="no" />
+                        </FrameLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/tvRefugio"
+                                    style="@style/Adopta.CardTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="Refugio Huellitas" />
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginStart="6dp"
+                                    android:src="@drawable/ic_shield_check"
+                                    app:tint="@color/adopta_teal_dark"
+                                    android:contentDescription="Refugio verificado" />
+                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/tvRespuesta"
+                                style="@style/Adopta.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                tools:text="Responde en ~2 h" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Compatibilidad explicada -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCompat"
+                    style="@style/Adopta.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/tvCompat"
+                                style="@style/Adopta.Display"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/adopta_teal_dark"
+                                android:textSize="28sp"
+                                tools:text="92%" />
+                            <TextView
+                                style="@style/Adopta.CardTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="compatible contigo" />
+                        </LinearLayout>
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progCompat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:max="100"
+                            app:indicatorColor="@color/adopta_teal_dark"
+                            app:trackColor="@color/adopta_blue_light"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="8dp" />
+                        <TextView
+                            android:id="@+id/tvRazonCompat"
+                            style="@style/Adopta.Body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            tools:text="Tienes patio y Luna necesita espacio para jugar." />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_glass_circle"
+        android:contentDescription="Volver"
+        android:padding="10dp"
+        android:src="@drawable/ic_back"
+        app:tint="@color/white" />
+
+    <ImageButton
+        android:id="@+id/btnFavorito"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_glass_circle"
+        android:contentDescription="Guardar"
+        android:padding="10dp"
+        android:src="@drawable/ic_bookmark_outline"
+        app:tint="@color/white" />
+
     <LinearLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:layout_gravity="bottom"
         android:background="@color/white"
-        android:elevation="8dp">
+        android:elevation="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAdoptar"
+            style="@style/Adopta.Button"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="0dp"
-            android:text="Solicitar adopción"
-            style="@style/Adopta.Button"/>
+            android:text="Quiero conocerla" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

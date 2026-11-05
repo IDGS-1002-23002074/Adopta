@@ -21,6 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HomeActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".ForgotPasswordActivity" android:exported="false" />
+        <activity android:name=".ChangePasswordActivity" android:exported="false" />
+        <activity android:name=".EditProfileActivity" android:exported="false" />
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".PetDetailActivity" android:exported="false" />
+        <activity android:name=".NotificationDetailActivity" android:exported="false" />
+        <activity android:name=".TrackingDetailActivity" android:exported="false" />
+        <activity android:name=".TrackingHistoryActivity" android:exported="false" />
+        <activity android:name=".RegisterTrackingActivity" android:exported="false" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/bg_screen">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                         android:progress="60"
                         app:trackThickness="8dp"
                         app:trackCornerRadius="4dp"
-                        app:indicatorColor="@color/adopta_orange"
+                        app:indicatorColor="@color/adopta_teal"
                         app:trackColor="@color/adopta_blue_light"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

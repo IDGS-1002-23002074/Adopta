@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".FavoritesFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/bg_screen">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:paddingTop="24dp"
+        android:paddingTop="16dp"
         android:paddingBottom="8dp">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             style="@style/Adopta.Title"
-            android:text="Mis favoritos"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Guardados" />
+        <TextView
             style="@style/Adopta.Subtitle"
-            android:text="Las mascotas que te robaron el corazón"
-            android:layout_marginTop="4dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Las mascotas que te robaron el corazón" />
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -37,39 +38,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
             android:paddingTop="8dp"
-            android:paddingBottom="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:paddingBottom="24dp"
             tools:listitem="@layout/item_favorite"
-            tools:itemCount="4"/>
+            tools:itemCount="4" />
         <LinearLayout
             android:id="@+id/layoutEmpty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="32dp"
+            android:padding="40dp"
             android:visibility="gone">
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_favorite"
-                app:tint="@color/adopta_blue_light"/>
+            <FrameLayout
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/bg_icon_bubble">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bookmark_outline"
+                    app:tint="@color/adopta_teal"
+                    android:importantForAccessibility="no" />
+            </FrameLayout>
             <TextView
+                style="@style/Adopta.Section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Aún no tienes favoritos"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="20dp"
+                android:text="Aún no guardas ninguna mascota" />
             <TextView
+                style="@style/Adopta.Subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.Caption"
-                android:text="Toca el corazón en una mascota para guardarla aquí"
+                android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:layout_marginTop="4dp"/>
+                android:text="Toca el marcador en una tarjeta para tenerla a la mano." />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnExplorar"
+                style="@style/Adopta.Button.Tonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingStart="28dp"
+                android:paddingEnd="28dp"
+                android:text="Explorar mascotas" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
