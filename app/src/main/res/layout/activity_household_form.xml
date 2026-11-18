@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/adopta_teal_dark"
+        app:title="Información del hogar"
+        app:titleTextColor="@color/adopta_text"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/adopta_teal_dark" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="24dp">
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Adopta.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:id="@+id/cardErrores"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvErrores"
+                        style="@style/Adopta.Caption"
+                        android:textColor="@color/adopta_danger" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="Tu vivienda"
+                android:layout_marginTop="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Régimen de la vivienda"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etRegimen" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRegimen"
+                style="@style/Adopta.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/etRegimen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llArrendador"
+                android:visibility="gone">
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/swArrendador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mi arrendador permite mascotas"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:minHeight="48dp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swExterior"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tengo patio, jardín o terraza"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llCercado"
+                android:visibility="gone">
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/swCercado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="El espacio exterior está cercado"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:minHeight="48dp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Superficie aproximada en m² (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etSuperficie" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSuperficie"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSuperficie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    android:maxLength="4" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Personas que viven en el hogar"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etPersonas" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPersonas"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPersonas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    android:maxLength="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swMenores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hay menores de edad en el hogar"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swAcuerdo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Todos en casa están de acuerdo con adoptar"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="Cuidados"
+                android:layout_marginTop="24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Tiempo que estaría solo al día"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etHorasSolo" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHorasSolo"
+                style="@style/Adopta.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/etHorasSolo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Dónde dormiría"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etLugarDormir" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLugarDormir"
+                style="@style/Adopta.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/etLugarDormir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Quién lo cuidaría si viajas (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etCuidador" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCuidador"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCuidador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Presupuesto mensual para su cuidado"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etPresupuesto" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPresupuesto"
+                style="@style/Adopta.Dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/etPresupuesto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Veterinario de confianza (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etVetNombre" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilVetNombre"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etVetNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Teléfono del veterinario (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etVetTelefono" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilVetTelefono"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etVetTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="Otras mascotas"
+                android:layout_marginTop="24dp" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swOtras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tengo otras mascotas"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llOtras"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Adopta.CardTitle"
+                    android:text="Cuántas"
+                    android:textSize="14sp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="2dp"
+                    android:labelFor="@id/etCantidadOtras" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCantidadOtras"
+                    style="@style/Adopta.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCantidadOtras"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:importantForAutofill="no"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Adopta.CardTitle"
+                    android:text="De qué especies"
+                    android:textSize="14sp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="2dp"
+                    android:labelFor="@id/etEspeciesOtras" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEspeciesOtras"
+                    style="@style/Adopta.TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEspeciesOtras"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapSentences"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/swOtrasEster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Están esterilizadas"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:minHeight="48dp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/swOtrasVac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tienen sus vacunas al día"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:minHeight="48dp"
+                    android:fontFamily="@font/inter_regular" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Mascotas que has tenido antes (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etHistorial" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHistorial"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHistorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="Compromisos"
+                android:layout_marginTop="24dp" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swVisita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acepto una visita domiciliaria"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swSeguimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acepto el seguimiento posterior a la adopción"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swCompromisoEster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Me comprometo a esterilizarla si aún no lo está"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swPrivacidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acepto el aviso de privacidad"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/swVeracidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Declaro que la información es verdadera"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/adopta_text"
+                android:textSize="15sp"
+                android:minHeight="48dp"
+                android:fontFamily="@font/inter_regular" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Tu nombre completo como firma"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etFirma" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirma"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFirma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:importantForAutofill="no"
+                    android:maxLength="160" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardar"
+                style="@style/Adopta.Button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Guardar y continuar"
+                android:layout_marginTop="24dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBorrador"
+                style="@style/Adopta.Button.Text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Guardar borrador"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

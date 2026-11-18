@@ -1,9 +1,22 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Adopta" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.Adopta" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/adopta_teal_dark</item>
+        <item name="colorPrimaryVariant">@color/adopta_text</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/adopta_mint</item>
+        <item name="colorOnSecondary">@color/adopta_text</item>
+        <item name="android:colorAccent">@color/adopta_teal_dark</item>
+        <item name="android:windowBackground">@color/adopta_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:windowAnimationStyle">@style/Adopta.Animation</item>
+        <item name="textInputStyle">@style/Adopta.TextField</item>
+        <item name="materialButtonStyle">@style/Adopta.Button</item>
+        <item name="materialCardViewStyle">@style/Adopta.Card</item>
+        <item name="bottomNavigationStyle">@style/Adopta.BottomNav</item>
     </style>
-
     <style name="Theme.Adopta" parent="Base.Theme.Adopta" />
 </resources>

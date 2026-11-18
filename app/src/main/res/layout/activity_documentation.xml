@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/adopta_teal_dark"
+        app:title="Documentación"
+        app:titleTextColor="@color/adopta_text"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/adopta_teal_dark" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="12dp">
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Adopta.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvResumenDocs"
+                        style="@style/Adopta.CardTitle"
+                        android:text="" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Adopta.Caption"
+                        android:id="@+id/tvPlazo"
+                        android:layout_marginTop="4dp" />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progChecklist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:max="100"
+                        app:indicatorColor="@color/adopta_teal_dark"
+                        app:trackColor="@color/adopta_blue_light"
+                        app:trackCornerRadius="3dp"
+                        app:trackThickness="6dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="1. Documentos"
+                android:layout_marginTop="24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Caption"
+                android:text="Fotos nítidas o PDF, máximo 5 MB por archivo."
+                android:layout_marginTop="2dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llRequisitos"
+                android:layout_marginTop="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="2. Información del hogar"
+                android:layout_marginTop="24dp" />
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Adopta.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvInfoTitulo"
+                            style="@style/Adopta.CardTitle"
+                            android:layout_weight="1"
+                            android:text="Cuéntanos de tu hogar" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvInfoEstado"
+                            android:fontFamily="@font/inter_medium"
+                            android:textSize="12sp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Adopta.Caption"
+                        android:id="@+id/tvInfoTexto"
+                        android:layout_marginTop="6dp"
+                        android:text="Vivienda, tiempo disponible, otras mascotas y compromisos." />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnInfo"
+                        style="@style/Adopta.Button.Tonal"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Completar información"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="3. Referencias personales"
+                android:layout_marginTop="24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Caption"
+                android:text="Agrega al menos 2 personas que puedan hablar de ti."
+                android:layout_marginTop="2dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llReferencias"
+                android:layout_marginTop="8dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddRef"
+                style="@style/Adopta.Button.Outline"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Agregar referencia"
+                android:layout_marginTop="8dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFaltan"
+            style="@style/Adopta.Caption"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEnviar"
+            style="@style/Adopta.Button"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Enviar para revisión"
+            android:layout_marginTop="0dp" />
+    </LinearLayout>
+</LinearLayout>

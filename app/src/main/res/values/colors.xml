@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Paleta Adopta+ -->
+    <color name="adopta_teal">#69A0A2</color>
+    <color name="adopta_teal_dark">#2B8292</color>
+    <color name="adopta_mint">#8BCCBC</color>
+    <color name="adopta_text">#1C4057</color>
+    <color name="adopta_gray">#7D7E7E</color>
+    <color name="adopta_cream">#EBF7F5</color>
+    <color name="adopta_blue_light">#DBEEEC</color>
+    <color name="adopta_background">#FBFDFD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="adopta_scrim_clear">#001C4057</color>
+    <color name="adopta_scrim_mid">#661C4057</color>
+    <color name="adopta_scrim_strong">#E61C4057</color>
+    <color name="adopta_overlay">#F01C4057</color>
+    <color name="adopta_glass">#33FFFFFF</color>
+    <color name="adopta_white_90">#E6FFFFFF</color>
+    <color name="adopta_hairline">#141C4057</color>
+
+    <!-- Líneas y estados (chips de estatus del diseño web) -->
+    <color name="adopta_line">#DCEBE9</color>
+    <color name="adopta_success">#3C9A62</color>
+    <color name="adopta_success_bg">#E7F5EC</color>
+    <color name="adopta_warning">#B8741A</color>
+    <color name="adopta_warning_bg">#FCEFDD</color>
+    <color name="adopta_danger">#C65A5A</color>
+    <color name="adopta_danger_bg">#FBE4E4</color>
 </resources>

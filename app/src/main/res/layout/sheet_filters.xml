@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sheet_top"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="24dp">
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_handle" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Adopta.Title"
+        android:textSize="22sp"
+        android:text="Más filtros"
+        android:layout_marginTop="18dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Adopta.CardTitle"
+        android:text="Sexo"
+        android:textSize="14sp"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/etSexo" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSexo"
+        style="@style/Adopta.Dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Adopta.CardTitle"
+        android:text="Ubicación (ciudad)"
+        android:textSize="14sp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/etCiudad" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCiudad"
+        style="@style/Adopta.Dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:startIconDrawable="@drawable/ic_location">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Adopta.CardTitle"
+        android:text="Raza"
+        android:textSize="14sp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="2dp"
+        android:labelFor="@id/etRaza" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilRaza"
+        style="@style/Adopta.Dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/etRaza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAplicar"
+        style="@style/Adopta.Button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Aplicar filtros"
+        android:layout_marginTop="24dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLimpiarFiltros"
+        style="@style/Adopta.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Limpiar"
+        android:layout_marginTop="4dp" />
+</LinearLayout>

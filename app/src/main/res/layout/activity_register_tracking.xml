@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@color/adopta_teal_dark"
+        app:title="Nuevo reporte"
+        app:titleTextColor="@color/adopta_text"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:indicatorColor="@color/adopta_teal_dark" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="32dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Subtitle"
+                android:text="Cuéntanos cómo va la adaptación. Llena al menos un campo."
+                android:id="@+id/tvIntro" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Comportamiento"
+                android:textSize="14sp"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etComportamiento" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilComportamiento"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etComportamiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000"
+                    android:hint="¿Cómo se porta? ¿Juega, se esconde?" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Salud"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etSalud" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSalud"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSalud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000"
+                    android:hint="Visitas al veterinario, molestias…" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Alimentación"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etAlimentacion" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAlimentacion"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAlimentacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000"
+                    android:hint="Qué come y cuántas veces" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Adaptación al hogar"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etAdaptacion" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAdaptacion"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAdaptacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000"
+                    android:hint="Con la familia, otras mascotas…" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.CardTitle"
+                android:text="Observaciones (opcional)"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etObservaciones" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilObservaciones"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etObservaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:minLines="2"
+                    android:gravity="top"
+                    android:maxLength="2000" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Section"
+                android:text="Fotos (opcional)"
+                android:layout_marginTop="22dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Adopta.Caption"
+                android:text="Hasta 5 fotos."
+                android:layout_marginTop="2dp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/llFotos" />
+            </HorizontalScrollView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddFoto"
+                style="@style/Adopta.Button.Outline"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Agregar foto"
+                android:layout_marginTop="10dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviar"
+                style="@style/Adopta.Button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Enviar reporte"
+                android:layout_marginTop="24dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
