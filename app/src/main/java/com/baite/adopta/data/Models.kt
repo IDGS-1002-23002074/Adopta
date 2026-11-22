@@ -23,6 +23,13 @@ data class Usuario(
 }
 
 data class AuthResponse(val token: String = "", val usuario: Usuario = Usuario())
+
+data class RegistroResponse(
+    val mensaje: String = "",
+    val correoEnmascarado: String = "",
+    val vigenciaMinutos: Int = 10
+)
+
 data class MensajeResponse(val mensaje: String = "")
 data class ForgotResponse(
     val mensaje: String = "",

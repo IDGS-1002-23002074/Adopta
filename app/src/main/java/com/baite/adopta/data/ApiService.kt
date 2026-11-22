@@ -16,10 +16,23 @@ import retrofit2.http.Query
 interface ApiService {
 
     // ---- Acceso y cuenta (RF001-RF006)
-    @POST("api/auth/login") suspend fun login(@Body body: Map<String, String>): AuthResponse
-    @POST("api/auth/register") suspend fun register(@Body body: Map<String, String?>): AuthResponse
-    @POST("api/auth/forgot") suspend fun forgot(@Body body: Map<String, String>): ForgotResponse
-    @POST("api/auth/reset") suspend fun reset(@Body body: Map<String, String>): MensajeResponse
+    @POST("api/auth/login")
+    suspend fun login(@Body body: Map<String, String>): AuthResponse
+
+    @POST("api/auth/register")
+    suspend fun register(@Body body: Map<String, String?>): RegistroResponse
+
+    @POST("api/auth/verify-email")
+    suspend fun verifyEmail(@Body body: Map<String, String>): MensajeResponse
+
+    @POST("api/auth/resend-verification")
+    suspend fun resendVerification(@Body body: Map<String, String>): RegistroResponse
+
+    @POST("api/auth/forgot")
+    suspend fun forgot(@Body body: Map<String, String>): ForgotResponse
+
+    @POST("api/auth/reset")
+    suspend fun reset(@Body body: Map<String, String>): MensajeResponse
 
     @GET("api/me") suspend fun me(): MeResponse
     @PUT("api/me") suspend fun updateMe(@Body body: MeUpdate): MeResponse

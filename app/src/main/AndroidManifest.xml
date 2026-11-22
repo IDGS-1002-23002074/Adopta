@@ -44,6 +44,7 @@
         <activity android:name=".ReturnRequestActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".PostEditorActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".PostDetailActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".VerifyEmailActivity" android:exported="false" />
 
         <!-- Para compartir con la app de cámara la foto que se va a tomar -->
         <provider

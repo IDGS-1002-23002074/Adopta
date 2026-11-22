@@ -1,6 +1,7 @@
 package com.baite.adopta
 
 import android.content.Intent
+import android.widget.Toast
 import android.os.Bundle
 import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
@@ -69,13 +70,20 @@ class RegisterActivity : BaseActivity() {
                 )
                 when (val r = api { ApiClient.api.register(body) }) {
                     is Outcome.Ok -> {
-                        Session.save(r.value.token, r.value.usuario)
-                        startActivity(
-                            Intent(this@RegisterActivity, HomeActivity::class.java)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        )
-                        finish()
-                        return@launch
+                        Toast.makeText(
+                          this@RegisterActivity,
+                          r.value.mensaje,
+                          Toast.LENGTH_LONG
+                       ).show()
+                       val intent = Intent(
+                          this@RegisterActivity,
+                          VerifyEmailActivity::class.java
+                       ).apply {
+                           putExtra("correo", v("correo"))
+                           putExtra("correo_enmascarado", r.value.correoEnmascarado)
+                       }
+                       startActivity(intent)
+                       finish()
                     }
                     is Outcome.Fail -> {
                         r.applyTo(fields.mapValues { it.value.second })
