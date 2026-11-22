@@ -40,8 +40,7 @@ class ForgotPasswordActivity : BaseActivity() {
                 when (val r = api { ApiClient.api.forgot(mapOf("correo" to email)) }) {
                     is Outcome.Ok -> startActivity(
                         Intent(this@ForgotPasswordActivity, ResetPasswordActivity::class.java)
-                            .putExtra(Extras.EMAIL, email)
-                            .putExtra(Extras.CODE, r.value.codigoDev)
+                           .putExtra(Extras.EMAIL, email)
                     )
                     is Outcome.Fail -> btn.rootView.showFail(r) { btn.performClick() }
                 }

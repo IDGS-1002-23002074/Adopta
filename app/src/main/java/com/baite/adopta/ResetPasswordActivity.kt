@@ -40,13 +40,6 @@ class ResetPasswordActivity : BaseActivity() {
         val tvReenviar = findViewById<TextView>(R.id.tvReenviar)
         listOf(etCodigo to tilCodigo, etNueva to tilNueva, etConfirmar to tilConfirmar).forEach { (e, t) -> e.doAfterTextChanged { t.error = null } }
 
-        // En desarrollo el servidor devuelve el código para poder probar sin servicio de correo.
-        intent.getStringExtra(Extras.CODE)?.let {
-            if (BuildConfig.DEBUG) {
-                findViewById<TextView>(R.id.tvCodigoDev).apply { text = "Código de desarrollo: $it"; visible(true) }
-                etCodigo.setText(it)
-            }
-        }
 
         fun startTimer() {
             tvReenviar.isEnabled = false
@@ -68,7 +61,6 @@ class ResetPasswordActivity : BaseActivity() {
                 when (val r = api { ApiClient.api.forgot(mapOf("correo" to email)) }) {
                     is Outcome.Ok -> {
                         tvReenviar.rootView.snack("Te enviamos un nuevo código")
-                        r.value.codigoDev?.let { if (BuildConfig.DEBUG) etCodigo.setText(it) }
                         startTimer()
                     }
                     is Outcome.Fail -> tvReenviar.rootView.showFail(r)

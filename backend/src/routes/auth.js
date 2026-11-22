@@ -411,46 +411,68 @@ router.post('/forgot', limiter, wrap(async (req, res) => {
   }
 
   const u = await one(
-    `SELECT id_usuario,contrasena,estado,nombre
+    `SELECT id_usuario, estado, nombre
      FROM usuarios
-     WHERE correo=?`,
+     WHERE correo = ?`,
     [correo]
   );
 
   const out = {
     mensaje: 'Si el correo está registrado, te enviamos un código de verificación.',
     correo_enmascarado: maskEmail(correo),
-    vigencia_minutos: 10
+    vigencia_minutos: VIGENCIA_MINUTOS
   };
 
   if (u && u.estado === 'Activo') {
-    const codigo = codigoRecuperacion(
-      u,
-      Math.floor(Date.now() / VENTANA_MS)
+    const codigo = generarCodigo();
+    const codigoHash = hashCodigo(u.id_usuario, codigo);
+
+    // Invalidar cualquier código anterior que siga activo.
+    await q(
+      `UPDATE tokens_recuperacion
+       SET usado = 1
+       WHERE id_usuario = ? AND usado = 0`,
+      [u.id_usuario]
+    );
+
+    // Guardar únicamente el hash del nuevo código.
+    await q(
+      `INSERT INTO tokens_recuperacion
+       (id_usuario, token_hash, fecha_creacion, fecha_expiracion, usado, intentos)
+       VALUES (?, ?, NOW(), DATE_ADD(NOW(), INTERVAL ? MINUTE), 0, 0)`,
+      [u.id_usuario, codigoHash, VIGENCIA_MINUTOS]
     );
 
     try {
       const enviado = await sendMail(
         correo,
-        'Tu código de Adopta+',
+        'Tu código de recuperación de Adopta+',
         `
           <p>Hola ${u.nombre},</p>
-          <p>Tu código para restablecer la contraseña es:</p>
-          <p style="font-size:20px;font-weight:bold">${codigo}</p>
-          <p>Vence en 10 minutos.</p>
-          <p>Si no lo solicitaste, ignora este mensaje.</p>
+          <p>Recibimos una solicitud para restablecer tu contraseña.</p>
+          <p>Tu código de verificación es:</p>
+          <p style="font-size:24px;font-weight:bold;letter-spacing:5px">
+            ${codigo}
+          </p>
+          <p>Este código vence en ${VIGENCIA_MINUTOS} minutos.</p>
+          <p>Si no solicitaste este cambio, puedes ignorar este mensaje.</p>
         `
       );
 
       if (!enviado) {
-        console.error('No se pudo enviar el correo de recuperación.');
+        throw new Error('El servicio de correo no pudo enviar el código.');
       }
     } catch (error) {
-      console.error('Error enviando correo de recuperación:', error.message);
-    }
+      // Si no se pudo enviar, invalidar el código que quedó guardado.
+      await q(
+        `UPDATE tokens_recuperacion
+         SET usado = 1
+         WHERE id_usuario = ? AND token_hash = ?`,
+        [u.id_usuario, codigoHash]
+      );
 
-    if (cfg.devExposeResetCode && cfg.env !== 'production') {
-      out.codigo_dev = codigo;
+      console.error('Error enviando código de recuperación:', error.message);
+      throw new HttpError(503, 'No fue posible enviar el correo. Inténtalo nuevamente.');
     }
   }
 
@@ -467,25 +489,77 @@ router.post('/reset', limiter, wrap(async (req, res) => {
     throw bad(pe, { nueva_contrasena: pe });
   }
 
-  const u = await one(
-    `SELECT id_usuario,contrasena,estado
-     FROM usuarios
-     WHERE correo=?`,
-    [correo || '']
-  );
-
-  if (
-    !u ||
-    u.estado !== 'Activo' ||
-    !/^\d{6}$/.test(String(codigo)) ||
-    !codigoRecuperacionValido(u, codigo)
-  ) {
+  if (!isEmail(correo) || !/^\d{6}$/.test(String(codigo || ''))) {
     throw new HttpError(400, 'El código no es válido o ya venció');
   }
 
+  const u = await one(
+    `SELECT
+       u.id_usuario,
+       u.estado,
+       t.token_hash,
+       t.usado,
+       t.intentos,
+       (t.fecha_expiracion > NOW()) AS vigente
+     FROM usuarios u
+     INNER JOIN tokens_recuperacion t
+       ON t.id_usuario = u.id_usuario
+     WHERE u.correo = ?
+     ORDER BY t.fecha_creacion DESC
+     LIMIT 1`,
+    [correo]
+  );
+
+  if (!u || u.estado !== 'Activo') {
+    throw new HttpError(400, 'El código no es válido o ya venció');
+  }
+
+  if (Number(u.usado) === 1 || Number(u.vigente) !== 1) {
+    throw new HttpError(400, 'El código no es válido o ya venció');
+  }
+
+  if (Number(u.intentos) >= MAX_INTENTOS) {
+    await q(
+      `UPDATE tokens_recuperacion
+       SET usado = 1
+       WHERE id_usuario = ? AND token_hash = ?`,
+      [u.id_usuario, u.token_hash]
+    );
+
+    throw new HttpError(
+      400,
+      'Superaste el número de intentos. Solicita un código nuevo.'
+    );
+  }
+
+  // Comparar el código recibido contra el hash almacenado.
+  if (!compararCodigo(u.id_usuario, codigo, u.token_hash)) {
+    await q(
+      `UPDATE tokens_recuperacion
+       SET intentos = intentos + 1,
+           usado = IF(intentos + 1 >= ?, 1, usado)
+       WHERE id_usuario = ? AND token_hash = ?`,
+      [MAX_INTENTOS, u.id_usuario, u.token_hash]
+    );
+
+    throw new HttpError(400, 'El código no es válido o ya venció');
+  }
+
+  // Actualizar la contraseña y consumir el código.
+  const hashContrasena = await bcrypt.hash(nueva, 10);
+
   await q(
-    'UPDATE usuarios SET contrasena=? WHERE id_usuario=?',
-    [await bcrypt.hash(nueva, 10), u.id_usuario]
+    `UPDATE usuarios
+     SET contrasena = ?
+     WHERE id_usuario = ?`,
+    [hashContrasena, u.id_usuario]
+  );
+
+  await q(
+    `UPDATE tokens_recuperacion
+     SET usado = 1
+     WHERE id_usuario = ? AND usado = 0`,
+    [u.id_usuario]
   );
 
   res.json({
