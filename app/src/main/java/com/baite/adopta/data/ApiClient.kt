@@ -20,7 +20,7 @@ object ApiClient {
         .create()
 
     fun baseUrl(): String {
-        val url = (Session.serverUrl ?: BuildConfig.API_BASE_URL).trim()
+        val url = BuildConfig.API_BASE_URL.trim()
         return if (url.endsWith("/")) url else "$url/"
     }
 
@@ -59,9 +59,5 @@ object ApiClient {
                 .create(ApiService::class.java)
                 .also { service = it }
         }
-
-    /** Recrea Retrofit (p. ej. si cambió la URL del servidor). */
-    fun reset() {
-        service = null
-    }
+    
 }

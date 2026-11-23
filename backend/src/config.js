@@ -22,7 +22,7 @@ const cfg = {
 
     // SSL para Azure MySQL
     ssl: env('DB_SSL', 'false') === 'true'
-      ? { minVersion: 'TLSv1.2' }
+      ? { minVersion: 'TLSv1.2', rejectUnauthorized: false }
       : undefined
   },
 

@@ -2,9 +2,7 @@ package com.baite.adopta
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.baite.adopta.data.ApiClient
@@ -79,14 +77,6 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        // Solo en builds de desarrollo: apuntar la app a la IP de tu PC desde un celular físico.
-        if (BuildConfig.DEBUG) {
-            findViewById<TextView>(R.id.tvServer).apply {
-                visible(true)
-                text = "Servidor: ${ApiClient.baseUrl()}"
-                setOnClickListener { askServer() }
-            }
-        }
     }
 
     private fun applyInsetsOff() {
@@ -99,25 +89,4 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun askServer() {
-        val input = EditText(this).apply {
-            setText(ApiClient.baseUrl())
-            hint = "http://192.168.1.50:3000/"
-            setPadding(dp(24), dp(16), dp(24), dp(8))
-        }
-        AlertDialog.Builder(this)
-            .setTitle("URL del servidor")
-            .setMessage("Emulador: http://10.0.2.2:3000/\nCelular físico: la IP de tu PC en la misma red Wi-Fi.")
-            .setView(input)
-            .setPositiveButton("Guardar") { _, _ ->
-                Session.serverUrl = input.text.toString().trim()
-                findViewById<TextView>(R.id.tvServer).text = "Servidor: ${ApiClient.baseUrl()}"
-            }
-            .setNeutralButton("Restablecer") { _, _ ->
-                Session.serverUrl = null
-                findViewById<TextView>(R.id.tvServer).text = "Servidor: ${ApiClient.baseUrl()}"
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
-    }
 }

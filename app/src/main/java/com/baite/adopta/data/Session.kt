@@ -45,18 +45,9 @@ object Session {
 
     /** Cierra la sesión (RF006): borra token y datos locales. */
     fun clear() {
-        val server = serverUrl
         prefs.edit().clear().apply()
-        if (server != null) prefs.edit().putString(KEY_SERVER, server).apply()
     }
 
-    /** Servidor alternativo para desarrollo (celular físico). null = el de BuildConfig. */
-    var serverUrl: String?
-        get() = prefs.getString(KEY_SERVER, null)
-        set(value) {
-            prefs.edit().apply { if (value.isNullOrBlank()) remove(KEY_SERVER) else putString(KEY_SERVER, value) }.apply()
-            ApiClient.reset()
-        }
 
     // Opciones de notificaciones (RF005): qué categorías se muestran en Actividad
     fun notifEnabled(tipo: String): Boolean = prefs.getBoolean("notif_$tipo", true)
@@ -64,5 +55,4 @@ object Session {
 
     private const val KEY_TOKEN = "token"
     private const val KEY_USER = "user"
-    private const val KEY_SERVER = "server"
 }
