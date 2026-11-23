@@ -68,16 +68,28 @@ class FavoritesAdapter(
 }
 
 class NotificationsAdapter(
-    private val all: List<AppNotification>,
+    private var all: List<AppNotification>,
     private val onClick: (AppNotification) -> Unit
 ) : RecyclerView.Adapter<NotificationsAdapter.VH>() {
 
+    private var tipoActual: String? = null
     private var shown: List<AppNotification> = all
 
     class VH(v: View) : RecyclerView.ViewHolder(v)
 
+    /** Reemplaza la lista conservando el filtro seleccionado. */
+    fun submit(list: List<AppNotification>) {
+        all = list
+        applyFilter()
+    }
+
     fun filter(tipo: String?) {
-        shown = if (tipo == null) all else all.filter { it.tipo == tipo }
+        tipoActual = tipo
+        applyFilter()
+    }
+
+    private fun applyFilter() {
+        shown = tipoActual?.let { t -> all.filter { it.tipo == t } } ?: all
         notifyDataSetChanged()
     }
 

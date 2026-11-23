@@ -37,8 +37,37 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
                 else -> null
             }
             adapter.filter(tipo)
-            empty.visibility = if (adapter.itemCount == 0) View.VISIBLE else View.GONE
+            updateEmpty()
         }
+        showLocal()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (view != null) refresh()
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden && view != null) refresh()
+    }
+
+    /** Muestra lo que hay en memoria y pide la lista fresca a la API. */
+    private fun refresh() {
+        showLocal()
+        NotificationRepository.load {
+            if (view == null) return@load
+            showLocal()
+            (activity as? HomeActivity)?.refreshBadge()
+        }
+    }
+
+    private fun showLocal() {
+        adapter.submit(SampleData.notificaciones)
+        updateEmpty()
+    }
+
+    private fun updateEmpty() {
         empty.visibility = if (adapter.itemCount == 0) View.VISIBLE else View.GONE
     }
 }
