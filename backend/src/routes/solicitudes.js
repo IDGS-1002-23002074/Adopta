@@ -369,7 +369,7 @@ router.post('/:id/requisitos/:idReq/archivos', upload.single('archivo'), wrap(as
   res.status(201).json(await detalle(req, id));
 }));
 
-router.delete('/:id/archivos/:idArchivo', wrap(async (req, res) => {
+const quitarArchivoHandler = wrap(async (req, res) => {
   const id = int(req.params.id);
   await tx(async (conn) => {
     const s = await cargarSolicitud(id, req.user.id_usuario, conn);
@@ -386,7 +386,10 @@ router.delete('/:id/archivos/:idArchivo', wrap(async (req, res) => {
     if (n < a.min_archivos) await q(`UPDATE requisitos_solicitud SET estado='Pendiente' WHERE id_requisito=?`, [a.id_requisito], conn);
   });
   res.json(await detalle(req, id));
-}));
+});
+
+router.delete('/:id/archivos/:idArchivo', quitarArchivoHandler);
+router.post('/:id/archivos/:idArchivo/eliminar', quitarArchivoHandler);
 
 // Descarga protegida: solo el dueño de la solicitud (los archivos no son públicos)
 const archivos = require('express').Router();

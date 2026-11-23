@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_screen">
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         app:title="Editar perfil"
         app:titleTextColor="@color/adopta_text"
         app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressTop"
         android:layout_width="match_parent"
@@ -24,6 +26,7 @@
         android:indeterminate="true"
         android:visibility="invisible"
         app:indicatorColor="@color/adopta_teal_dark" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -32,6 +35,7 @@
         android:fillViewport="true"
         android:scrollbars="none"
         android:clipToPadding="false">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +43,8 @@
             android:padding="20dp"
             android:paddingTop="4dp"
             android:paddingBottom="32dp">
+
+            <!-- Avatar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,10 +62,10 @@
                         android:scaleType="centerCrop"
                         app:shapeAppearanceOverlay="@style/Adopta.Circle" />
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/tvIniciales"
                         style="@style/Adopta.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="30sp"
                         android:layout_gravity="center"
                         android:textColor="@color/adopta_teal_dark" />
@@ -72,16 +78,19 @@
                     android:text="Cambiar foto"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
+
+            <!-- SECCIÓN 1: DATOS PERSONALES -->
             <TextView
+                style="@style/Adopta.Section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.Section"
                 android:text="Datos personales"
                 android:layout_marginTop="12dp" />
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Nombre(s)"
                 android:textSize="14sp"
                 android:layout_marginTop="10dp"
@@ -99,12 +108,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName|textCapWords"
+                    android:maxLength="60"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Apellido paterno"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -121,13 +132,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName|textCapWords"
+                    android:maxLength="60"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Apellido materno"
+                android:text="Apellido materno (opcional)"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
@@ -143,12 +156,63 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName|textCapWords"
+                    android:maxLength="60"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Fecha de nacimiento"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etFechaNac" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFechaNac"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:startIconDrawable="@drawable/ic_calendar">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFechaNac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Selecciona tu fecha de nacimiento"
+                    android:inputType="none"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
                 style="@style/Adopta.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ocupación"
+                android:textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="2dp"
+                android:labelFor="@id/etOcupacion" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOcupacion"
+                style="@style/Adopta.TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOcupacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:maxLength="80"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/Adopta.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Teléfono"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -166,44 +230,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:maxLength="10"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- SECCIÓN 2: DOMICILIO Y VIVIENDA -->
             <TextView
+                style="@style/Adopta.Section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.Section"
                 android:text="Domicilio y vivienda"
                 android:layout_marginTop="24dp" />
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Fecha de nacimiento"
-                android:textSize="14sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="2dp"
-                android:labelFor="@id/etFechaNac" />
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilFechaNac"
-                style="@style/Adopta.TextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                app:startIconDrawable="@drawable/ic_calendar">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etFechaNac"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:importantForAutofill="no" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Dirección"
                 android:textSize="14sp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etDireccion" />
             <com.google.android.material.textfield.TextInputLayout
@@ -217,13 +262,15 @@
                     android:id="@+id/etDireccion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPostalAddress"
+                    android:inputType="textPostalAddress|textCapSentences"
+                    android:maxLength="150"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Ciudad"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -240,12 +287,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
+                    android:maxLength="80"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Código postal"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -261,14 +310,16 @@
                     android:id="@+id/etCP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Ej. 37000"
                     android:inputType="number"
                     android:importantForAutofill="no"
-                    android:maxLength="10" />
+                    android:maxLength="5" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Tipo de vivienda"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -284,34 +335,37 @@
                     android:id="@+id/etTipoVivienda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Selecciona una opción"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- SECCIÓN 3: EXPERIENCIA CON MASCOTAS -->
             <TextView
+                style="@style/Adopta.Section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.Section"
-                android:text="Experiencia"
+                android:text="Experiencia con mascotas"
                 android:layout_marginTop="24dp" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swTieneMascotas"
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbTieneMascotas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Actualmente tengo mascotas"
-                android:textOn=""
-                android:textOff=""
                 android:layout_marginTop="6dp"
+                android:minHeight="48dp"
+                android:text="Actualmente tengo mascotas"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                android:minHeight="48dp"
                 android:fontFamily="@font/inter_regular"
-                app:showText="false" />
+                app:buttonTint="@color/adopta_teal_dark" />
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Experiencia con mascotas"
+                android:text="Cuéntanos tu experiencia previa"
                 android:textSize="14sp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etExperiencia" />
             <com.google.android.material.textfield.TextInputLayout
@@ -324,45 +378,27 @@
                     android:id="@+id/etExperiencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Ej. He tenido perros y gatos anteriormente..."
                     android:inputType="textMultiLine|textCapSentences"
                     android:importantForAutofill="no"
                     android:minLines="3"
                     android:gravity="top"
                     android:maxLength="2000" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- SECCIÓN 4: CONTACTO DE EMERGENCIA -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Ocupación"
-                android:textSize="14sp"
-                android:layout_marginTop="14dp"
-                android:layout_marginStart="2dp"
-                android:labelFor="@id/etOcupacion" />
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilOcupacion"
-                style="@style/Adopta.TextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etOcupacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapSentences"
-                    android:importantForAutofill="no" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/Adopta.Section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Contacto de emergencia"
                 android:layout_marginTop="24dp" />
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
-                android:text="Nombre"
+                android:text="Nombre completo"
                 android:textSize="14sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
@@ -372,18 +408,21 @@
                 style="@style/Adopta.TextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp">
+                android:layout_marginTop="6dp"
+                app:startIconDrawable="@drawable/ic_person">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName|textCapWords"
+                    android:maxLength="100"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Teléfono"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -394,18 +433,21 @@
                 style="@style/Adopta.TextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp">
+                android:layout_marginTop="6dp"
+                app:startIconDrawable="@drawable/ic_phone">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
+                    android:maxLength="10"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
+                style="@style/Adopta.CardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Adopta.CardTitle"
                 android:text="Parentesco"
                 android:textSize="14sp"
                 android:layout_marginTop="14dp"
@@ -421,9 +463,12 @@
                     android:id="@+id/etEmParentesco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Ej. Madre, Hermano, Amigo/a"
                     android:inputType="textCapSentences"
+                    android:maxLength="50"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGuardar"
                 style="@style/Adopta.Button"

@@ -13,7 +13,7 @@ import com.baite.adopta.data.SolicitudDetalle
 import com.baite.adopta.data.api
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -38,7 +38,7 @@ class HouseholdFormActivity : BaseActivity() {
     private var saving = false
 
     private fun dd(i: Int) = findViewById<MaterialAutoCompleteTextView>(i)
-    private fun sw(i: Int) = findViewById<MaterialSwitch>(i)
+    private fun sw(i: Int) = findViewById<MaterialCheckBox>(i)
     private fun et(i: Int) = findViewById<TextInputEditText>(i)
 
     override fun onCreate(savedInstanceState: Bundle?) {

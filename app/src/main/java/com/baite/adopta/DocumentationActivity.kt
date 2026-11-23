@@ -139,9 +139,11 @@ class DocumentationActivity : BaseActivity() {
                 visible(editable)
                 setOnClickListener {
                     MaterialAlertDialogBuilder(this@DocumentationActivity)
-                        .setTitle("¿Quitar esta referencia?")
-                        .setPositiveButton("Quitar") { _, _ -> mutate { ApiClient.api.quitarReferencia(id, ref.idReferencia) } }
-                        .setNegativeButton("Cancelar", null).show()
+                       .setTitle("¿Quitar esta referencia?")
+                       .setPositiveButton("Quitar") { _, _ ->
+                          mutate { ApiClient.api.quitarReferencia(this@DocumentationActivity.id, ref.idReferencia) }
+                        }
+                       .setNegativeButton("Cancelar", null).show()
                 }
             }
             lr.addView(v)
@@ -185,7 +187,7 @@ class DocumentationActivity : BaseActivity() {
             row.findViewById<TextView>(R.id.tvInfo).text = "${a.extension.uppercase()} · ${a.tamanoBytes / 1024} KB · ${Format.date(a.fechaCarga)}"
             row.findViewById<View>(R.id.btnEliminar).apply {
                 visible(!locked)
-                setOnClickListener { mutate { ApiClient.api.quitarArchivo(id, a.idArchivo) } }
+                setOnClickListener { mutate { ApiClient.api.quitarArchivo(this@DocumentationActivity.id, a.idArchivo) } }
             }
             lf.addView(row)
         }
@@ -301,7 +303,7 @@ class DocumentationActivity : BaseActivity() {
             val tilT = v.findViewById<TextInputLayout>(R.id.tilRefTelefono)
             val tilR = v.findViewById<TextInputLayout>(R.id.tilRefRelacion)
             tilN.error = if (nombre.length < 5) "Escribe el nombre completo" else null
-            tilT.error = if (!Regex("^[0-9+\\s()-]{7,20}$").matches(tel)) "Teléfono no válido" else null
+            tilT.error = if (!Regex("^\\d{10}$").matches(tel)) {"El teléfono debe tener exactamente 10 dígitos"} else {null}
             tilR.error = if (rel.isEmpty()) "Indica la relación" else null
             if (tilN.error != null || tilT.error != null || tilR.error != null) return@setOnClickListener
             dlg.dismiss()

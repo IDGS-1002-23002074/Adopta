@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_screen">
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         app:title="Información del hogar"
         app:titleTextColor="@color/adopta_text"
         app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressTop"
         android:layout_width="match_parent"
@@ -24,6 +26,7 @@
         android:indeterminate="true"
         android:visibility="invisible"
         app:indicatorColor="@color/adopta_teal_dark" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -32,6 +35,7 @@
         android:fillViewport="true"
         android:scrollbars="none"
         android:clipToPadding="false">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,6 +44,7 @@
             android:paddingEnd="20dp"
             android:paddingTop="4dp"
             android:paddingBottom="24dp">
+
             <com.google.android.material.card.MaterialCardView
                 style="@style/Adopta.Card"
                 android:layout_width="match_parent"
@@ -60,12 +65,14 @@
                         android:textColor="@color/adopta_danger" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Adopta.Section"
                 android:text="Tu vivienda"
                 android:layout_marginTop="8dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,6 +82,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etRegimen" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilRegimen"
                 style="@style/Adopta.Dropdown"
@@ -87,50 +95,90 @@
                     android:layout_height="wrap_content"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/llArrendador"
                 android:visibility="gone">
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/swArrendador"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mi arrendador permite mascotas"
                     android:layout_marginTop="8dp"
-                    android:textColor="@color/adopta_text"
-                    android:textSize="15sp"
                     android:minHeight="48dp"
-                    android:fontFamily="@font/inter_regular" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="12dp"
+                        android:text="Mi arrendador permite mascotas"
+                        android:textColor="@color/adopta_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/swArrendador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:buttonTint="@color/adopta_teal_dark" />
+                </LinearLayout>
             </LinearLayout>
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swExterior"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tengo patio, jardín o terraza"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Tengo patio, jardín o terraza"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swExterior"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/llCercado"
                 android:visibility="gone">
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/swCercado"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="El espacio exterior está cercado"
                     android:layout_marginTop="8dp"
-                    android:textColor="@color/adopta_text"
-                    android:textSize="15sp"
                     android:minHeight="48dp"
-                    android:fontFamily="@font/inter_regular" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="12dp"
+                        android:text="El espacio exterior está cercado"
+                        android:textColor="@color/adopta_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/swCercado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:buttonTint="@color/adopta_teal_dark" />
+                </LinearLayout>
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,6 +188,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etSuperficie" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilSuperficie"
                 style="@style/Adopta.TextField"
@@ -154,6 +203,7 @@
                     android:importantForAutofill="no"
                     android:maxLength="4" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,6 +213,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etPersonas" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPersonas"
                 style="@style/Adopta.TextField"
@@ -177,32 +228,60 @@
                     android:importantForAutofill="no"
                     android:maxLength="2" />
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swMenores"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hay menores de edad en el hogar"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swAcuerdo"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Hay menores de edad en el hogar"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swMenores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Todos en casa están de acuerdo con adoptar"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Todos en casa están de acuerdo con adoptar"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swAcuerdo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Adopta.Section"
                 android:text="Cuidados"
                 android:layout_marginTop="24dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -212,6 +291,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etHorasSolo" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilHorasSolo"
                 style="@style/Adopta.Dropdown"
@@ -224,6 +304,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -233,6 +314,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etLugarDormir" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilLugarDormir"
                 style="@style/Adopta.Dropdown"
@@ -245,6 +327,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -254,6 +337,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etCuidador" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCuidador"
                 style="@style/Adopta.TextField"
@@ -267,6 +351,7 @@
                     android:inputType="textCapSentences"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -276,6 +361,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etPresupuesto" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPresupuesto"
                 style="@style/Adopta.Dropdown"
@@ -288,6 +374,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -297,6 +384,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etVetNombre" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilVetNombre"
                 style="@style/Adopta.TextField"
@@ -310,6 +398,7 @@
                     android:inputType="textPersonName|textCapWords"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -319,6 +408,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etVetTelefono" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilVetTelefono"
                 style="@style/Adopta.TextField"
@@ -332,28 +422,44 @@
                     android:inputType="phone"
                     android:importantForAutofill="no" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Adopta.Section"
                 android:text="Otras mascotas"
                 android:layout_marginTop="24dp" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swOtras"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tengo otras mascotas"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Tengo otras mascotas"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swOtras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:id="@+id/llOtras"
                 android:visibility="gone">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -363,6 +469,7 @@
                     android:layout_marginTop="14dp"
                     android:layout_marginStart="2dp"
                     android:labelFor="@id/etCantidadOtras" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilCantidadOtras"
                     style="@style/Adopta.TextField"
@@ -377,6 +484,7 @@
                         android:importantForAutofill="no"
                         android:maxLength="2" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -386,6 +494,7 @@
                     android:layout_marginTop="14dp"
                     android:layout_marginStart="2dp"
                     android:labelFor="@id/etEspeciesOtras" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilEspeciesOtras"
                     style="@style/Adopta.TextField"
@@ -399,27 +508,54 @@
                         android:inputType="textCapSentences"
                         android:importantForAutofill="no" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/swOtrasEster"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Están esterilizadas"
                     android:layout_marginTop="8dp"
-                    android:textColor="@color/adopta_text"
-                    android:textSize="15sp"
                     android:minHeight="48dp"
-                    android:fontFamily="@font/inter_regular" />
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/swOtrasVac"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="12dp"
+                        android:text="Están esterilizadas"
+                        android:textColor="@color/adopta_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/swOtrasEster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:buttonTint="@color/adopta_teal_dark" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tienen sus vacunas al día"
                     android:layout_marginTop="8dp"
-                    android:textColor="@color/adopta_text"
-                    android:textSize="15sp"
                     android:minHeight="48dp"
-                    android:fontFamily="@font/inter_regular" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="12dp"
+                        android:text="Tienen sus vacunas al día"
+                        android:textColor="@color/adopta_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/inter_regular" />
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/swOtrasVac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:buttonTint="@color/adopta_teal_dark" />
+                </LinearLayout>
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -429,6 +565,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etHistorial" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilHistorial"
                 style="@style/Adopta.TextField"
@@ -445,62 +582,129 @@
                     android:gravity="top"
                     android:maxLength="2000" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Adopta.Section"
                 android:text="Compromisos"
                 android:layout_marginTop="24dp" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swVisita"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acepto una visita domiciliaria"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swSeguimiento"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Acepto una visita domiciliaria"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swVisita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acepto el seguimiento posterior a la adopción"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swCompromisoEster"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Acepto el seguimiento posterior a la adopción"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swSeguimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Me comprometo a esterilizarla si aún no lo está"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swPrivacidad"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Me comprometo a esterilizarla si aún no lo está"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swCompromisoEster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acepto el aviso de privacidad"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/swVeracidad"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Acepto el aviso de privacidad"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swPrivacidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Declaro que la información es verdadera"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/adopta_text"
-                android:textSize="15sp"
                 android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Declaro que la información es verdadera"
+                    android:textColor="@color/adopta_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/inter_regular" />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/swVeracidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/adopta_teal_dark" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -510,6 +714,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginStart="2dp"
                 android:labelFor="@id/etFirma" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilFirma"
                 style="@style/Adopta.TextField"
@@ -524,6 +729,7 @@
                     android:importantForAutofill="no"
                     android:maxLength="160" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGuardar"
                 style="@style/Adopta.Button"
@@ -531,6 +737,7 @@
                 android:layout_height="56dp"
                 android:text="Guardar y continuar"
                 android:layout_marginTop="24dp" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBorrador"
                 style="@style/Adopta.Button.Text"
@@ -538,6 +745,7 @@
                 android:layout_height="48dp"
                 android:text="Guardar borrador"
                 android:layout_marginTop="4dp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -15,6 +15,10 @@ class HomeActivity : BaseActivity() {
 
     private lateinit var nav: BottomNavigationView
 
+    private val requestNotifPermission = registerForActivityResult(
+    androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
+    ) { }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -23,8 +27,30 @@ class HomeActivity : BaseActivity() {
         nav.setOnItemSelectedListener { item -> showTab(item.itemId) }
         nav.setOnItemReselectedListener { /* conserva el estado de la pestaña */ }
 
-        // Solo en el primer arranque; al rotar, el sistema restaura los fragments.
-        if (savedInstanceState == null) nav.selectedItemId = R.id.nav_mascotas
+        if (savedInstanceState == null) {
+            showTab(R.id.nav_mascotas)
+        }
+
+        NotificationHelper.createChannel(this)
+        NotificationWorker.schedule(this)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU &&
+               androidx.core.content.ContextCompat.checkSelfPermission(
+               this, android.Manifest.permission.POST_NOTIFICATIONS
+            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                requestNotifPermission.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            }
+
+            lifecycleScope.launch {
+                while (true) {
+                    val r = com.baite.adopta.data.api { com.baite.adopta.data.ApiClient.api.notificaciones(null) }
+                    if (r is com.baite.adopta.data.Outcome.Ok) {
+                       NotificationHelper.notifyNewFromServer(this@HomeActivity, r.value.items)
+                    refreshBadge()
+                }
+                kotlinx.coroutines.delay(20_000L)
+            }
+        }
     }
 
     override fun onResume() {

@@ -162,4 +162,17 @@
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
+    <style name="Adopta.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="android:textOn">""</item>
+        <item name="android:textOff">""</item>
+        <item name="showText">false</item>
+        <item name="android:switchPadding">12dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">@color/adopta_text</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="thumbTint">@color/adopta_switch_thumb</item>
+        <item name="trackTint">@color/adopta_switch_track</item>
+    </style>
 </resources>

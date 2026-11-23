@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import android.view.ContextThemeWrapper
 
 /** RF033 — Solicitud de devolución: motivos del catálogo + explicación. */
 class ReturnRequestActivity : BaseActivity() {
@@ -57,16 +58,20 @@ class ReturnRequestActivity : BaseActivity() {
                     motivos = rc.value.motivosDevolucion
                     group.removeAllViews()
                     motivos.forEach { m ->
-                        group.addView(Chip(this@ReturnRequestActivity).apply {
+                        val chipContext = ContextThemeWrapper(this@ReturnRequestActivity, R.style.Adopta_Chip)
+                        group.addView(Chip(chipContext, null, 0).apply {
+                            id = View.generateViewId()
                             tag = m.idMotivo
                             text = m.nombre
                             isCheckable = true
-                            isCheckedIconVisible = false
+                            isCheckedIconVisible = true
                             chipBackgroundColor = ContextCompat.getColorStateList(context, R.color.chip_bg)
                             setTextColor(ContextCompat.getColorStateList(context, R.color.chip_text))
                             chipStrokeWidth = dp(1).toFloat()
                             chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adopta_line))
-                            setOnCheckedChangeListener { _, _ -> findViewById<View>(R.id.tvErrMotivos).visible(false) }
+                            setOnCheckedChangeListener { _, _ ->
+                                this@ReturnRequestActivity.findViewById<View>(R.id.tvErrMotivos).visible(false)
+                            }
                         })
                     }
                 }

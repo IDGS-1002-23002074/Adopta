@@ -3,6 +3,7 @@ package com.baite.adopta
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.lifecycleScope
 import com.baite.adopta.data.ApiClient
 import com.baite.adopta.data.Format
@@ -12,7 +13,6 @@ import com.baite.adopta.data.Session
 import com.baite.adopta.data.api
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -22,24 +22,21 @@ class SettingsActivity : BaseActivity() {
 
     private val sin = "Sin preferencia"
     private val tipos = mapOf(
-        R.id.swNotifSolicitudes to "Solicitudes", R.id.swNotifDocumentos to "Documentos", R.id.swNotifSeguimiento to "Seguimiento",
-        R.id.swNotifComunidad to "Comunidad", R.id.swNotifDevoluciones to "Devoluciones"
+        R.id.swNotifSolicitudes to "Solicitudes",
+        R.id.swNotifDocumentos to "Documentos",
+        R.id.swNotifSeguimiento to "Seguimiento",
+        R.id.swNotifComunidad to "Comunidad",
+        R.id.swNotifDevoluciones to "Devoluciones"
     )
 
     private fun dd(i: Int) = findViewById<MaterialAutoCompleteTextView>(i)
+    private fun sw(i: Int) = findViewById<SwitchCompat>(i)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        tipos.keys.forEach { id ->
-            findViewById<MaterialSwitch>(id).apply {
-                showText = false
-                textOn = ""
-                textOff = ""
-            }
-        }
         findViewById<MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
-        tipos.forEach { (id, tipo) -> findViewById<MaterialSwitch>(id).isChecked = Session.notifEnabled(tipo) }
+        tipos.forEach { (id, tipo) -> sw(id).isChecked = Session.notifEnabled(tipo) }
         dd(R.id.etTamano).setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, listOf(sin) + CatalogFragment.TAMANOS.map { Format.tamano(it) }))
         dd(R.id.etEdad).setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, listOf(sin) + CatalogFragment.RANGOS_EDAD))
         dd(R.id.etEspecie).setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, listOf(sin, "Perro", "Gato")))
@@ -71,7 +68,9 @@ class SettingsActivity : BaseActivity() {
     private fun save() {
         fun value(i: Int) = dd(i).text?.toString()?.takeIf { it.isNotBlank() && it != sin }
         val body = Preferencias(value(R.id.etEspecie), Format.tamanoDb(value(R.id.etTamano)), value(R.id.etEdad))
-        tipos.forEach { (id, tipo) -> Session.setNotifEnabled(tipo, findViewById<MaterialSwitch>(id).isChecked) }
+        tipos.forEach { (id, tipo) -> Session.setNotifEnabled(tipo, sw(id).isChecked) }
+        tipos.forEach { (id, tipo) -> Session.setNotifEnabled(tipo, sw(id).isChecked) }
+        NotificationWorker.schedule(this)
         val btn = findViewById<MaterialButton>(R.id.btnGuardar)
         btn.isEnabled = false
         lifecycleScope.launch {

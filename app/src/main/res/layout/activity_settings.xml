@@ -126,71 +126,65 @@
                 style="@style/Adopta.Caption"
                 android:text="Elige qué avisos quieres ver en Actividad."
                 android:layout_marginTop="2dp" />
-            <com.google.android.material.materialswitch.MaterialSwitch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swNotifSolicitudes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Solicitudes de adopción"
-                android:textOn=""
-                android:textOff=""
                 android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="Solicitudes de adopción"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                app:showText="false"
-                android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
+                android:fontFamily="@font/inter_regular"
+                app:thumbTint="@color/adopta_teal_dark" />
+
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swNotifDocumentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Documentos pendientes"
-                android:textOn=""
-                android:textOff=""
-                app:showText="false"
                 android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="Documentos pendientes"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
+                android:fontFamily="@font/inter_regular"
+                app:thumbTint="@color/adopta_teal_dark" />
+
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swNotifSeguimiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Seguimiento de mi mascota"
-                android:textOn=""
-                android:textOff=""
-                app:showText="false"
                 android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="Seguimiento de mi mascota"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
+                android:fontFamily="@font/inter_regular"
+                app:thumbTint="@color/adopta_teal_dark" />
+
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swNotifComunidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comunidad"
-                android:textOn=""
-                android:textOff=""
-                app:showText="false"
                 android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="Comunidad"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
-            <com.google.android.material.materialswitch.MaterialSwitch
+                android:fontFamily="@font/inter_regular"
+                app:thumbTint="@color/adopta_teal_dark" />
+
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/swNotifDevoluciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Devoluciones"
-                android:textOn=""
-                android:textOff=""
-                app:showText="false"
                 android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="Devoluciones"
                 android:textColor="@color/adopta_text"
                 android:textSize="15sp"
-                android:minHeight="48dp"
-                android:fontFamily="@font/inter_regular" />
+                android:fontFamily="@font/inter_regular"
+                app:thumbTint="@color/adopta_teal_dark" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGuardar"
                 style="@style/Adopta.Button"

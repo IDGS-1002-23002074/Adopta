@@ -69,14 +69,27 @@ class TrackingDetailActivity : BaseActivity() {
 
         findViewById<MaterialButton>(R.id.btnReporte).apply {
             visible(a.puedeReportar)
-            setOnClickListener { startActivity(Intent(this@TrackingDetailActivity, RegisterTrackingActivity::class.java).putExtra(Extras.ADOPTION_ID, id)) }
+            setOnClickListener {
+                startActivity(
+                    Intent(this@TrackingDetailActivity, RegisterTrackingActivity::class.java)
+                        .putExtra(Extras.ADOPTION_ID, a.idAdopcion)
+                )
+            }
         }
         findViewById<MaterialButton>(R.id.btnHistorial).setOnClickListener {
-            startActivity(Intent(this, TrackingHistoryActivity::class.java).putExtra(Extras.ADOPTION_ID, id))
+            startActivity(
+                Intent(this, TrackingHistoryActivity::class.java)
+                    .putExtra(Extras.ADOPTION_ID, a.idAdopcion)
+            )
         }
         findViewById<MaterialButton>(R.id.btnDevolucion).apply {
             visible(a.puedeDevolver)
-            setOnClickListener { startActivity(Intent(this@TrackingDetailActivity, ReturnRequestActivity::class.java).putExtra(Extras.ADOPTION_ID, id)) }
+            setOnClickListener {
+                startActivity(
+                    Intent(this@TrackingDetailActivity, ReturnRequestActivity::class.java)
+                        .putExtra(Extras.ADOPTION_ID, a.idAdopcion)
+                )
+            }
         }
     }
 }
