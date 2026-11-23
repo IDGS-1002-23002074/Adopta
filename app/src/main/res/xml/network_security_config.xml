@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+        SOLO DESARROLLO: permite http:// hacia la API local (emulador: 10.0.2.2, o la IP de tu PC).
+        Cuando la API esté en producción con HTTPS, elimina este archivo y su referencia en el manifest.
+    -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
