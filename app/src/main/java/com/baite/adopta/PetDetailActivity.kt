@@ -21,6 +21,8 @@ class PetDetailActivity : AppCompatActivity() {
 
     private lateinit var pet: Pet
     private lateinit var btnSave: ImageButton
+    private lateinit var tvFotoContador: TextView
+    private var fotoIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +55,23 @@ class PetDetailActivity : AppCompatActivity() {
             WindowInsetsCompat.CONSUMED
         }
 
+        tvFotoContador = findViewById(R.id.tvFotoContador)
         bind()
+
+        // Trae la descripción completa y todas las fotos desde la API.
+        PetRepository.loadDetail(pet.id) { updated ->
+            if (isDestroyed || updated == null) return@loadDetail
+            pet = updated
+            fotoIndex = 0
+            bind()
+        }
+        // Tocar la foto avanza a la siguiente (si hay más de una).
+        findViewById<ImageView>(R.id.ivMascota).setOnClickListener { nextPhoto() }
 
         btnBack.setOnClickListener { finish() }
         btnSave.setOnClickListener {
-            SampleData.toggleGuardado(pet.id)
+            val saved = SampleData.toggleGuardado(pet.id)
+            PetRepository.setFavorite(pet.id, saved)
             updateSaveIcon()
             btnSave.animate().scaleX(0.8f).scaleY(0.8f).setDuration(90).withEndAction {
                 btnSave.animate().scaleX(1f).scaleY(1f).setDuration(220)
@@ -71,11 +85,15 @@ class PetDetailActivity : AppCompatActivity() {
     }
 
     private fun bind() {
-        PetPhoto.bind(findViewById<ImageView>(R.id.ivMascota), pet)
+        showPhoto()
         findViewById<TextView>(R.id.tvNombre).text = pet.nombre
         findViewById<TextView>(R.id.tvRaza).text = "${pet.raza} · ${pet.especie}"
         findViewById<TextView>(R.id.tvUbicacion).text =
-            "${pet.ubicacion} · " + String.format(Locale.getDefault(), "%.1f km", pet.distanciaKm)
+            if (pet.distanciaKm >= 0) {
+                "${pet.ubicacion} · " + String.format(Locale.getDefault(), "%.1f km", pet.distanciaKm)
+            } else {
+                pet.ubicacion
+            }
         findViewById<TextView>(R.id.tileEdad).text = pet.edad
         findViewById<TextView>(R.id.tileTamano).text = pet.tamano
         findViewById<TextView>(R.id.tileEnergia).text = pet.energia
@@ -97,7 +115,10 @@ class PetDetailActivity : AppCompatActivity() {
         findViewById<View>(R.id.chipEsterilizada).visibility = if (pet.esterilizada) View.VISIBLE else View.GONE
 
         findViewById<TextView>(R.id.tvRefugio).text = pet.refugio
-        findViewById<TextView>(R.id.tvRespuesta).text = pet.respuesta
+        findViewById<TextView>(R.id.tvRespuesta).apply {
+            text = pet.respuesta
+            visibility = if (pet.respuesta.isBlank()) View.GONE else View.VISIBLE
+        }
 
         val card = findViewById<View>(R.id.cardCompat)
         if (pet.compatibilidad > 0) {
@@ -109,6 +130,26 @@ class PetDetailActivity : AppCompatActivity() {
             card.visibility = View.GONE
         }
         updateSaveIcon()
+    }
+
+    private fun showPhoto() {
+        val iv = findViewById<ImageView>(R.id.ivMascota)
+        val total = pet.fotos.size
+        if (total == 0) {
+            PetPhoto.bind(iv, pet)
+            tvFotoContador.visibility = View.GONE
+            return
+        }
+        if (fotoIndex >= total) fotoIndex = 0
+        PetPhoto.bind(iv, pet, pet.fotos[fotoIndex])
+        tvFotoContador.text = "${fotoIndex + 1}/$total"
+        tvFotoContador.visibility = if (total > 1) View.VISIBLE else View.GONE
+    }
+
+    private fun nextPhoto() {
+        if (pet.fotos.size < 2) return
+        fotoIndex = (fotoIndex + 1) % pet.fotos.size
+        showPhoto()
     }
 
     private fun updateSaveIcon() {

@@ -119,7 +119,8 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
         card.findViewById<TextView>(R.id.tvNombre).text = pet.nombre
         card.findViewById<TextView>(R.id.tvDetalle).text = "${pet.raza} · ${pet.edad}"
         card.findViewById<TextView>(R.id.tvDistancia).text =
-            String.format(Locale.getDefault(), "%.1f km", pet.distanciaKm)
+            if (pet.distanciaKm >= 0) String.format(Locale.getDefault(), "%.1f km", pet.distanciaKm)
+            else pet.ubicacion
     }
 
     // ---------------------------------------------------------------- gestos
@@ -274,7 +275,10 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
                 SampleData.decididos.add(pet.id)
                 SampleData.intereses.add(pet.id)
             }
-            KIND_SAVE -> SampleData.guardadosIds.add(pet.id)
+            KIND_SAVE -> {
+                SampleData.guardadosIds.add(pet.id)
+                PetRepository.setFavorite(pet.id, true)
+            }
             else -> SampleData.decididos.add(pet.id)
         }
         lastPet = pet
@@ -305,7 +309,10 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     private fun undo() {
         val p = lastPet ?: return
         when (lastKind) {
-            KIND_SAVE -> SampleData.guardadosIds.remove(p.id)
+            KIND_SAVE -> {
+                SampleData.guardadosIds.remove(p.id)
+                PetRepository.setFavorite(p.id, false)
+            }
             KIND_LIKE -> {
                 SampleData.intereses.remove(p.id)
                 SampleData.decididos.remove(p.id)

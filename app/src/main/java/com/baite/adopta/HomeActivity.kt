@@ -1,7 +1,14 @@
 package com.baite.adopta
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -9,10 +16,22 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/** Cada cuánto se revisan avisos nuevos mientras la app está en primer plano. */
+private const val POLL_MS = 30_000L
+
 /** Contenedor principal con la barra de navegación inferior. */
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var nav: BottomNavigationView
+    private val askNotificationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* el resultado se lee con areNotificationsEnabled() */ }
+    private val poller = Handler(Looper.getMainLooper())
+    private val pollTask = object : Runnable {
+        override fun run() {
+            NotificationRepository.load(applicationContext) { if (!isDestroyed) refreshBadge() }
+            poller.postDelayed(this, POLL_MS)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +49,40 @@ class HomeActivity : AppCompatActivity() {
         nav.setOnItemSelectedListener { item -> showTab(item.itemId) }
         nav.setOnItemReselectedListener { /* conserva el estado de la pestaña */ }
 
-        // Solo en el primer arranque; al rotar, el sistema restaura los fragments.
-        if (savedInstanceState == null) nav.selectedItemId = R.id.nav_descubrir
         refreshBadge()
+        if (savedInstanceState == null) askNotificationPermissionOnce()
+
+        // Primero se cargan las mascotas de la API; después se muestra la pestaña inicial.
+        PetRepository.load { error ->
+            if (isDestroyed) return@load
+            if (error != null) {
+                Toast.makeText(this, "$error Mostrando datos de ejemplo.", Toast.LENGTH_LONG).show()
+            }
+            // Solo en el primer arranque; al rotar, el sistema restaura los fragments.
+            if (savedInstanceState == null) nav.selectedItemId = R.id.nav_descubrir
+        }
     }
 
     override fun onResume() {
         super.onResume()
         refreshBadge()
+        poller.post(pollTask)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        poller.removeCallbacks(pollTask)
+    }
+
+    /** Android 13+: pide el permiso de notificaciones una sola vez; después se maneja desde Ajustes. */
+    private fun askNotificationPermissionOnce() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
+        if (NotificationPrefs.askedPermission || !NotificationPrefs.pushEnabled) return
+        val granted = ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+            PackageManager.PERMISSION_GRANTED
+        if (granted) return
+        NotificationPrefs.askedPermission = true
+        askNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
     /** Cambia de pestaña desde un fragment (p. ej. "Explorar mascotas"). */
@@ -45,8 +90,8 @@ class HomeActivity : AppCompatActivity() {
         nav.selectedItemId = itemId
     }
 
-    private fun refreshBadge() {
-        val unread = SampleData.notificaciones.count { !it.leida }
+    fun refreshBadge() {
+        val unread = NotificationRepository.unread
         if (unread > 0) {
             val badge = nav.getOrCreateBadge(R.id.nav_notificaciones)
             badge.number = unread

@@ -29,6 +29,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
             },
             onUnsave = { pet ->
                 SampleData.guardadosIds.remove(pet.id)
+                PetRepository.setFavorite(pet.id, false)
                 refresh()
             }
         )

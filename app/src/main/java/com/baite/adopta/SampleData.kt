@@ -23,7 +23,11 @@ data class Pet(
     /** DEMO: simula que el refugio acepta el interés (momento match). Sustituir por la respuesta del backend. */
     val aceptaInteres: Boolean = false,
     /** Índice de color del placeholder mientras no haya foto real (ver PetPhoto). */
-    val tono: Int = 0
+    val tono: Int = 0,
+    /** URL de la foto principal (API). Si es null se muestra el placeholder. */
+    val foto: String? = null,
+    /** URLs de todas las fotos (solo se llenan al abrir el detalle). */
+    val fotos: List<String> = emptyList()
 )
 
 data class AdoptedPet(
@@ -41,14 +45,16 @@ data class AppNotification(
     val mensaje: String,
     val tiempo: String,
     val tipo: String,
-    val leida: Boolean
+    val leida: Boolean,
+    val idSolicitud: Int? = null
 )
 
 object SampleData {
 
     const val MAX_SOLICITUDES = 3
 
-    val mascotas = listOf(
+    /** Datos de ejemplo hasta que PetRepository.load() los reemplaza con los de la API. */
+    var mascotas: List<Pet> = listOf(
         Pet(1, "Luna", "Mestiza", "León, Gto.", especie = "Gato", edad = "2 años", sexo = "Hembra",
             tamano = "Mediana", energia = "Media", distanciaKm = 3.2,
             descripcion = "Luna es cariñosa, juguetona y se lleva bien con otros gatos. Busca un hogar tranquilo donde pueda sentirse segura.",
@@ -94,11 +100,8 @@ object SampleData {
     val adoptadas = listOf(
         AdoptedPet(1, "Toby", "Adoptado el 12 oct 2026", "En adaptación", 60, "Última actualización: hace 2 días")
     )
-    val notificaciones = listOf(
-        AppNotification(1, "Solicitud aprobada", "Tu solicitud de adopción para Luna fue aprobada.", "Hace 1 h", "Solicitudes", false),
-        AppNotification(2, "Registra el avance de Toby", "Cuéntanos cómo va su adaptación.", "Ayer", "Seguimiento", true),
-        AppNotification(3, "Nuevas mascotas", "Hay 5 mascotas nuevas cerca de ti.", "Hace 3 días", "Comunidad", true)
-    )
+    /** Las llena NotificationRepository con GET /api/notificaciones. */
+    var notificaciones: List<AppNotification> = emptyList()
 
     // Estado en memoria (DEMO). Mover a base de datos / API.
     val guardadosIds: MutableSet<Int> = mutableSetOf(1, 2, 3)

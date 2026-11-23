@@ -4,12 +4,13 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 /**
  * Único punto donde se pinta la foto de una mascota.
- * Hoy muestra un placeholder con degradado de la paleta Adopta+ y una huella.
- * Para fotos reales: añade Coil o Glide y, aquí, cárgalas en la vista
- * (cambia scaleType a CENTER_CROP). El degradado queda como placeholder de fondo.
+ * Con URL: se carga con Glide (centerCrop) sobre el degradado de la paleta Adopta+.
+ * Sin URL (o si falla la descarga): se queda el degradado con la huella.
  */
 object PetPhoto {
 
@@ -28,9 +29,24 @@ object PetPhoto {
         )
     }
 
-    fun bind(view: ImageView, pet: Pet) {
+    /** Pinta la foto principal de la mascota. */
+    fun bind(view: ImageView, pet: Pet) = bind(view, pet, pet.foto)
+
+    /** Pinta una foto concreta (galería del detalle); [url] null = placeholder. */
+    fun bind(view: ImageView, pet: Pet, url: String?) {
         view.background = gradient(view.context, pet.tono)
-        view.scaleType = ImageView.ScaleType.CENTER
-        view.setImageResource(R.drawable.ph_paw)
+        if (url.isNullOrBlank()) {
+            Glide.with(view).clear(view)
+            view.scaleType = ImageView.ScaleType.CENTER
+            view.setImageResource(R.drawable.ph_paw)
+            return
+        }
+        view.scaleType = ImageView.ScaleType.CENTER_CROP
+        Glide.with(view)
+            .load(url)
+            .placeholder(R.drawable.ph_paw)
+            .error(R.drawable.ph_paw)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .into(view)
     }
 }
