@@ -19,10 +19,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // URL de la API de Adopta+ (backend/). 10.0.2.2 = tu PC visto desde el emulador de Android.
-        // En un celular físico usa la IP de tu PC en la red, p. ej. en gradle.properties:
-        //   ADOPTA_API_URL=http://192.168.1.50:3000/
-        val apiUrl = providers.gradleProperty("ADOPTA_API_URL").orElse("http://10.0.2.2:3000/").get()
+        // URL de la API de Adopta+ en producción (Azure App Service)
+        val apiUrl = providers.gradleProperty("ADOPTA_API_URL")
+            .orElse("https://adopta-movil-g5g5ftgqdzcnevft.eastus-01.azurewebsites.net/")
+            .get()
         buildConfigField("String", "API_BASE_URL", "\"$apiUrl\"")
     }
 

@@ -59,5 +59,5 @@ object ApiClient {
                 .create(ApiService::class.java)
                 .also { service = it }
         }
-    
+
 }
