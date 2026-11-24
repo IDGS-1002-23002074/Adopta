@@ -37,7 +37,8 @@ interface ApiService {
     @GET("api/me") suspend fun me(): MeResponse
     @PUT("api/me") suspend fun updateMe(@Body body: MeUpdate): MeResponse
     @PUT("api/me/password") suspend fun changePassword(@Body body: Map<String, String>): MensajeResponse
-    @Multipart @POST("api/me/foto") suspend fun uploadFoto(@Part foto: MultipartBody.Part): FotoResponse
+    @Multipart @POST("api/me/foto")
+    suspend fun uploadFoto(@Part foto: MultipartBody.Part): FotoResponse
     @GET("api/me/preferencias") suspend fun preferencias(): Preferencias
     @PUT("api/me/preferencias") suspend fun updatePreferencias(@Body body: Preferencias): Preferencias
 

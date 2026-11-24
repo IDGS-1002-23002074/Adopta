@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import coil.load
+import com.baite.adopta.data.ApiClient
 import com.baite.adopta.data.Format
 import com.baite.adopta.data.Outcome
 import com.google.android.material.snackbar.Snackbar
@@ -41,23 +42,41 @@ private fun gradiente(ctx: Context, tono: Int) = GradientDrawable(
     tonos[Math.floorMod(tono, tonos.size)].map { ContextCompat.getColor(ctx, it) }.toIntArray()
 )
 
+/**
+ * Redirige hacia el servidor web las imágenes de mascotas y refugios/organizaciones,
+ * manteniendo perfil y comunidad apuntando al servidor móvil.
+ */
+private fun resolveMediaUrl(url: String?): String? {
+    if (url.isNullOrBlank()) return url
+    val isWebMedia = url.contains("/mascotas/") ||
+            url.contains("/refugios/") ||
+            url.contains("/organizaciones/")
+    if (!isWebMedia) return url
+
+    val mobileBase = ApiClient.baseUrl().trimEnd('/')
+    val webBase = ApiClient.WEB_MEDIA_BASE_URL.trimEnd('/')
+    return url.replace(mobileBase, webBase)
+}
+
 /** Foto de mascota o publicación: si no hay URL se pinta un degradado con la huella. */
 fun ImageView.loadPhoto(url: String?, tono: Int = 0) {
     background = gradiente(context, tono)
-    if (url.isNullOrBlank()) {
+    val finalUrl = resolveMediaUrl(url)
+    if (finalUrl.isNullOrBlank()) {
         scaleType = ImageView.ScaleType.CENTER
         setImageResource(R.drawable.ph_paw)
     } else {
         scaleType = ImageView.ScaleType.CENTER_CROP
         setImageDrawable(null)
-        load(url) { crossfade(true) }
+        load(finalUrl) { crossfade(true) }
     }
 }
 
 /** Logo/avatar circular (usar con ShapeableImageView + Adopta.Circle). */
 fun ImageView.loadAvatar(url: String?) {
     val pad = dp(5)
-    if (url.isNullOrBlank()) {
+    val finalUrl = resolveMediaUrl(url)
+    if (finalUrl.isNullOrBlank()) {
         setBackgroundResource(R.color.adopta_blue_light)
         setPadding(pad, pad, pad, pad)
         scaleType = ImageView.ScaleType.FIT_CENTER
@@ -68,7 +87,7 @@ fun ImageView.loadAvatar(url: String?) {
         setPadding(0, 0, 0, 0)
         setBackgroundResource(R.color.white)
         scaleType = ImageView.ScaleType.CENTER_CROP
-        load(url) { crossfade(true) }
+        load(finalUrl) { crossfade(true) }
     }
 }
 
